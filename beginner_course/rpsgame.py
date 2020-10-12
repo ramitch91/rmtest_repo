@@ -24,13 +24,11 @@ def show_header():
 
 
 def play_game(player_1, player_2):
-    rounds = 3
-    wins_p1 = 0
-    wins_p2 = 0
+    wins = {player_1: 0, player_2: 0}
 
     roll_names = list(rolls.keys())
 
-    while wins_p1 < rounds and wins_p2 < rounds:
+    while not find_winner(wins, wins.keys()):
         roll1 = get_roll(player_1, roll_names)
         roll2 = random.choice(roll_names)
 
@@ -46,24 +44,15 @@ def play_game(player_1, player_2):
         if winner is None:
             print("This round is a tie.")
         else:
-            if winner == player_1:
-                print(f"{winner} take the round.")
-                wins_p1 += 1
-            elif winner == player_2:
-                print(f"{winner} takes the round.")
-                wins_p2 += 1
+            print(f"{winner} take(s) the round.")
+            wins[winner] += 1
 
-        print(f"Score is {player_1}: {wins_p1} and {player_2}: {wins_p2}.")
+        print(f"Current score is {wins}")
         print()
 
-    if wins_p1 >= rounds:
-        overall_winner = player_1
-        winning_statement = "win the game"
-    else:
-        overall_winner = player_2
-        winning_statement = "wins the game"
+    overall_winner = find_winner(wins, wins.keys())
 
-    print(f"{overall_winner} {winning_statement}.")
+    print(f"{overall_winner} win(s) the game.")
     print()
 
 
@@ -80,6 +69,15 @@ def get_roll(player_name, roll_names):
         return None
 
     return roll_names[selected_index]
+
+
+def find_winner(wins, names):
+    best_of = 3
+    for name in names:
+        if wins.get(name, 0) >= best_of:
+            return name
+
+    return None
 
 
 def check_winning_throw(player_1, player_2, roll1, roll2):
