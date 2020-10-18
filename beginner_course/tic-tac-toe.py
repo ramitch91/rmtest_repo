@@ -58,7 +58,7 @@ def show_header():
     print()
     print("-----------------------------------")
     print("        Tic-Tac-Toe Game")
-    print("           version 1")
+    print("           version 2")
     print("-----------------------------------")
     print()
 
@@ -100,42 +100,37 @@ def choose_location(board, symbol):
 
 
 def find_winner(board):
+    sequences = get_winning_sequences(board)
+
+    for cells in sequences:
+        symbol1 = cells[0]
+        if symbol1 and all(symbol1 == cell for cell in cells):
+            return True
+
+    return False
+
+
+def get_winning_sequences(board):
+    sequences = []
+
     # win by rows
     rows = board
-    for row in rows:
-        symbol1 = row[0]
-        if symbol1 and all(symbol1 == cell for cell in row):
-            return True
+    sequences.extend(rows)
 
     # win by columns
     columns = []
     for col_idx in range(0, 3):
         col = [board[0][col_idx], board[1][col_idx], board[2][col_idx]]
-        columns.append(col)
-
-    for col in columns:
-        symbol1 = col[0]
-        if symbol1 and all(symbol1 == cell for cell in col):
-            return True
+        sequences.append(col)
 
     # win by diagonals
     diagonals = [
         [board[0][0], board[1][1], board[2][2]],
         [board[0][2], board[1][1], board[2][0]],
     ]
+    sequences.extend(diagonals)
 
-    for diag in diagonals:
-        symbol1 = diag[0]
-        if symbol1 and all(symbol1 == cell for cell in diag):
-            return True
-
-    #    winning_moves = [
-    #        [[0, 0], [0, 1], [0, 2]],
-    #        [[0, 0], [1, 0], [2, 0]],
-    #        [[0, 1], [1, 1], [2, 1]],
-    #        [[0, 2], [1, 2], [2, 2]],
-    #    ]
-    return False
+    return sequences
 
 
 if __name__ == "__main__":
