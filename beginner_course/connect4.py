@@ -14,6 +14,8 @@
 #   announce winner
 #   show winning board
 
+import random
+from random import randint
 
 from typing import Sequence
 
@@ -42,7 +44,7 @@ def main():
         announce_turn(player)
         show_board(board)
 
-        if not choose_location(board, symbol):
+        if not choose_location(board, symbol, player):
             print("That is not a valid option. Please try again.")
             continue
 
@@ -74,15 +76,19 @@ def show_board(board):
     print()
 
 
-def choose_location(board, symbol):
-    #    try:
-    row = int(input("Choose a row: "))
-    #    except:
-    #        return False
-    #    try:
-    column = int(input("Choose a column: "))
-    #    except:
-    #        return False
+def choose_location(board, symbol, player):
+    if player == "Computer":
+        row = random.randint(1, 6)
+        column = random.randint(1, 7)
+    else:
+        try:
+            row = int(input("Choose a row: "))
+        except:
+            return False
+        try:
+            column = int(input("Choose a column: "))
+        except:
+            return False
 
     row -= 1
     column -= 1
