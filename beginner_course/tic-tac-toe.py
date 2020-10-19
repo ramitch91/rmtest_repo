@@ -65,7 +65,7 @@ def show_header():
 
 def announce_turn(player):
     print()
-    print(f"It's  {player}'s turn. Here's the board:")
+    print(f"It's {player}'s turn. Here's the board:")
     print()
 
 
