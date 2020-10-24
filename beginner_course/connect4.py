@@ -2,12 +2,12 @@
 # steps needed
 #   create the board
 #   set up players and symbols
-#   choose inital player
+#   choose initial player
 #   show board (6 rows by 7 columns)
 #   make sure player chooses a valid play
 #   check for winner
-#       check for win horizontaly
-#       check for win verticaly
+#       check for win horizontally
+#       check for win vertically
 #       check for win diagonally
 #   choose location
 #   rotate players
@@ -15,9 +15,8 @@
 #   show winning board
 
 import random
-from random import randint
-
-from typing import Sequence
+import datetime
+from typing import List, Optional
 
 
 def main():
@@ -35,8 +34,31 @@ def main():
 
     # SETUP PLAYERS AND SYMBOLS
     active_player_index = 0
-    players = ["Ricky", "Computer"]
-    symbols = ["R", "Y"]
+    player_name = input("Enter your name: ")
+    players = [player_name.capitalize(), "Computer"]
+
+    date_range = datetime.datetime.now().month
+    if date_range == 1:
+        symbols = ["❄", "🎿"]
+    elif date_range == 2:
+        symbols = ["💝", "💌"]
+    elif date_range in (4, 5):
+        symbols = ["🌼", "🌧️"]
+    elif date_range == 7:
+        symbols = ["🇺🇸", "🎆"]
+    elif date_range == 10:
+        symbols = ["🎃", "👻"]
+    elif date_range == 11:
+        symbols = ["🦃", "🥧"]
+    elif date_range == 12:
+        symbols = ["🎅", "🎄"]
+    else:
+        symbols = ["🍩", "🍦"]
+
+    print(f"Welcome {players[0]}")
+    print(f"Your symbol will be {symbols[0]}")
+    print(f"{players[1]} will be {symbols[1]}")
+    print()
 
     while not find_winner(board):
         player = players[active_player_index]
@@ -50,12 +72,17 @@ def main():
 
         active_player_index = (active_player_index + 1) % len(players)
 
+        print()
+        print(f"GAME OVER! {player} ({symbol}) has won with the board:")
+        print()
+        show_board(board)
+        print()
+
 
 def show_header():
     print()
     print("--------------------------------------")
     print("           Connect 4 Game")
-    print("             Version 1")
     print("--------------------------------------")
     print()
 
@@ -67,10 +94,11 @@ def announce_turn(player):
 
 
 def show_board(board):
-    for row in board:
+    for row_idx, row in enumerate(board, start=1):
         print("| ", end="")
-        for cell in row:
-            symbol = cell if cell is not None else "-"
+        for col_idx, cell in enumerate(row, start=1):
+            empty_text = f"({row_idx}, {col_idx})"
+            symbol = f"  {cell}  " if cell is not None else empty_text
             print(symbol, end=" | ")
         print()
     print()
@@ -78,24 +106,21 @@ def show_board(board):
 
 def choose_location(board, symbol, player):
     if player == "Computer":
-        row = random.randint(1, 6)
-        column = random.randint(1, 7)
+        column = random.randint(1, len(board[0]))
+        print(f"Computer chooses column {column}")
     else:
         try:
-            row = int(input("Choose a row: "))
-        except:
-            return False
-        try:
             column = int(input("Choose a column: "))
-        except:
+        except TypeError:
+            print("Oops! That was not a valid number.")
             return False
 
-    row -= 1
     column -= 1
-
-    if row < 0 or row >= len(board):
-        return False
     if column < 0 or column >= len(board[0]):
+        return False
+
+    row = find_bottom_row(board, column)
+    if row is None:
         return False
 
     cell = board[row][column]
@@ -104,6 +129,18 @@ def choose_location(board, symbol, player):
 
     board[row][column] = symbol
     return True
+
+
+def find_bottom_row(board: List[List[str]], column: int) -> Optional[int]:
+    col_cells = [
+        board[n][column]
+        for n in range(0, len(board))
+    ]
+    last_empty = None
+    for idx, cell in enumerate(col_cells):
+        if cell is None:
+            last_empty = idx
+    return last_empty
 
 
 def find_winner(board):
@@ -122,10 +159,12 @@ def get_winning_sequences(board):
 
     # Win by Rows
     rows = board
-    sequences.extend(rows)
+    # Go through each row and get any consecutive sequence of four cells in a row
+    for row in rows:
+        four_across = find_sequences_of_four_cells_in_a_row(row)
+        sequences.extend(four_across)
 
     # Win by Columns
-    column = []
     for col_idx in range(0, 7):
         column = [
             board[0][col_idx],
@@ -135,10 +174,13 @@ def get_winning_sequences(board):
             board[4][col_idx],
             board[5][col_idx],
         ]
-        sequences.append(column)
+        # Go through each column and get any consecutive sequence of four cells in a row
+        four_down = find_sequences_of_four_cells_in_a_row(column)
+        sequences.extend(four_down)
 
     # Win by Diagonals
     diagonals = [
+        # test for diagonals up and to the right
         # [board[0][0]],
         # [board[1][0], board[0][1]],
         # [board[2][0], board[1][1], board[0][2]],
@@ -151,6 +193,7 @@ def get_winning_sequences(board):
         # [board[5][4], board[3][5], board[2][6]],
         # [board[5][5], board[4][6]],
         # [board[5][6]],
+        # test for diagonals down and to the right
         # [board[0][6]],
         # [board[0][5], board[1][6]],
         # [board[0][4], board[1][5], board[2][6]],
@@ -164,9 +207,20 @@ def get_winning_sequences(board):
         # [board[4][0], board[5][1]],
         # [board[5][0]]
     ]
+    # Go through the diagonals to see if there are four consecutive cells in a row
+    for diag in diagonals:
+        four_diagonal = find_sequences_of_four_cells_in_a_row(diag)
+        sequences.extend(four_diagonal)
 
-    sequences.extend(diagonals)
+    return sequences
 
+
+def find_sequences_of_four_cells_in_a_row(cells: List[str]) -> List[List[str]]:
+    sequences = []
+    for n in range(0, len(cells) - 3):
+        candidate = cells[n:n + 4]
+        if len(candidate) == 4:
+            sequences.append(candidate)
     return sequences
 
 
