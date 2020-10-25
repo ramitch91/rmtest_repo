@@ -2,23 +2,45 @@ import random
 import json
 import os
 
-rolls = {"Nothing": "Here"}
+rolls = {}
 
 
 def main():
     load_rolls()
     show_header()
-    play_game("You", "Computer")
+    show_leaderboard()
+    player1, player2 = get_players()
+    play_game(player1, player2)
 
 
 def show_header():
     print()
     print("---------------------------------")
     print("      Rock, Paper, Scissors")
-    print("            version 2")
-    print("     Data Structures Edition")
+    print("            version 3")
+    print("   Leaderboard & Rolls Edition")
     print("---------------------------------")
     print()
+
+
+def show_leaderboard():
+    leaders = load_leaders()
+    sorted_leaders = list(leaders.items())
+    sorted_leaders.sort(key=lambda l: l[1], reverse=True)
+    print("LEADERS:")
+    for name, wins in sorted_leaders[0:5]:
+        print(f"{wins} -- {name}")
+    print()
+    print("--------------------------")
+    print()
+
+
+
+
+def get_players():
+    p1 = input("Player 1, what is your name? ").capitalize()
+    p2 = "Computer"
+    return p1, p2
 
 
 def play_game(player_1, player_2):
@@ -52,6 +74,7 @@ def play_game(player_1, player_2):
 
     print(f"{overall_winner} win(s) the game.")
     print()
+    record_win(overall_winner)
 
 
 def get_roll(player_name, roll_names):
@@ -79,7 +102,6 @@ def find_winner(wins, names):
 
 
 def check_winning_throw(player_1, player_2, roll1, roll2):
-
     if roll1 == roll2:
         print("The play was tied.")
 
@@ -94,12 +116,38 @@ def check_winning_throw(player_1, player_2, roll1, roll2):
 def load_rolls():
     global rolls
     directory = os.path.dirname(__file__)
-    filename = os.path.join(directory, 'rolls.json')
+    filename = os.path.join(directory, 'rpsrolls.json')
 
     with open(filename, 'r', encoding='utf-8') as fin:
         rolls = json.load(fin)
 
     print(f"Loaded rolls: {list(rolls.keys())}")
+
+
+def record_win(winner_name):
+    leaders = load_leaders()
+
+    if winner_name in leaders:
+        leaders[winner_name] += 1
+    else:
+        leaders[winner_name] = 1
+
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, "rpsleaderboard.json")
+
+    with open(filename, 'w', encoding="utf-8") as fout:
+        json.dump(leaders, fout)
+
+
+def load_leaders():
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, "rpsleaderboard.json")
+
+    if not os.path.exists(filename):
+        return {}
+
+    with open(filename, 'r', encoding="utf-8") as fin:
+        return json.load(fin)
 
 
 if __name__ == "__main__":
