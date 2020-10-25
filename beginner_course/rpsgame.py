@@ -1,3 +1,4 @@
+import datetime
 import random
 import json
 import os
@@ -6,11 +7,13 @@ rolls = {}
 
 
 def main():
+    log("Game started")
     load_rolls()
     show_header()
     show_leaderboard()
     player1, player2 = get_players()
     play_game(player1, player2)
+    log("Game Over")
 
 
 def show_header():
@@ -35,15 +38,15 @@ def show_leaderboard():
     print()
 
 
-
-
 def get_players():
     p1 = input("Player 1, what is your name? ").capitalize()
+    log(f"Player = {p1}")
     p2 = "Computer"
     return p1, p2
 
 
 def play_game(player_1, player_2):
+    log(f"New game starting between {player_1} and {player_2}")
     wins = {player_1: 0, player_2: 0}
 
     roll_names = list(rolls.keys())
@@ -56,23 +59,32 @@ def play_game(player_1, player_2):
             print("Try again.")
             continue
 
-        print(f"{player_1} roll {roll1}")
+        log(f"Round: {player_1} rolls {roll1} and {player_2} rolls {roll2}")
+        print(f"{player_1} rolls {roll1}")
         print(f"{player_2} rolls {roll2}")
 
         winner = check_winning_throw(player_1, player_2, roll1, roll2)
 
         if winner is None:
-            print("This round is a tie.")
+            msg = "This round is a tie."
+            log(msg)
+            print(msg)
         else:
-            print(f"{winner} take(s) the round.")
+            msg = f"{winner} take(s) the round."
+            log(msg)
+            print(msg)
             wins[winner] += 1
 
-        print(f"Current score is {wins}")
+        msg = f"Current score is {wins}"
+        log(msg)
+        print(msg)
         print()
 
     overall_winner = find_winner(wins, wins.keys())
 
-    print(f"{overall_winner} win(s) the game.")
+    msg = f"{overall_winner} win(s) the game."
+    log(msg)
+    print(msg)
     print()
     record_win(overall_winner)
 
@@ -121,7 +133,7 @@ def load_rolls():
     with open(filename, 'r', encoding='utf-8') as fin:
         rolls = json.load(fin)
 
-    print(f"Loaded rolls: {list(rolls.keys())}")
+    log(f"Loaded rolls: {list(rolls.keys())}")
 
 
 def record_win(winner_name):
@@ -138,6 +150,8 @@ def record_win(winner_name):
     with open(filename, 'w', encoding="utf-8") as fout:
         json.dump(leaders, fout)
 
+    log("Winner recorded.")
+
 
 def load_leaders():
     directory = os.path.dirname(__file__)
@@ -148,6 +162,17 @@ def load_leaders():
 
     with open(filename, 'r', encoding="utf-8") as fin:
         return json.load(fin)
+
+
+def log(msg):
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, 'rps.log')
+    time_text = datetime.datetime.now().strftime('%c')
+
+    with open(filename, 'a', encoding="utf-8") as fout:
+        fout.write(f"{time_text}: ")
+        fout.write(msg)
+        fout.write("\n")
 
 
 if __name__ == "__main__":

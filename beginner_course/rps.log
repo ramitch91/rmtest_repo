@@ -1,0 +1,35 @@
+Game started
+Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Player = Ricky
+New game starting between Ricky and Computer
+Round: Ricky rolls rock and Computer rolls sponge
+Ricky take(s) the round.
+Current score is {'Ricky': 1, 'Computer': 0}
+Round: Ricky rolls paper and Computer rolls water
+Ricky take(s) the round.
+Current score is {'Ricky': 2, 'Computer': 0}
+Round: Ricky rolls scissors and Computer rolls paper
+Ricky take(s) the round.
+Current score is {'Ricky': 3, 'Computer': 0}
+Ricky win(s) the game.
+Winner recorded.
+Game Over
+Game started
+Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Player = Amy
+New game starting between Amy and Computer
+Round: Amy rolls water and Computer rolls air
+Computer take(s) the round.
+Current score is {'Amy': 0, 'Computer': 1}
+Round: Amy rolls air and Computer rolls scissors
+Computer take(s) the round.
+Current score is {'Amy': 0, 'Computer': 2}
+Round: Amy rolls sponge and Computer rolls water
+Amy take(s) the round.
+Current score is {'Amy': 1, 'Computer': 2}
+Round: Amy rolls fire and Computer rolls rock
+Computer take(s) the round.
+Current score is {'Amy': 1, 'Computer': 3}
+Computer win(s) the game.
+Winner recorded.
+Game Over
