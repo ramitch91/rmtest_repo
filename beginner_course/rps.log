@@ -33,3 +33,5 @@ Current score is {'Amy': 1, 'Computer': 3}
 Computer win(s) the game.
 Winner recorded.
 Game Over
+Sun Oct 25 12:28:58 2020: Game started
+Sun Oct 25 12:28:58 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
