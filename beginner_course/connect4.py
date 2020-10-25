@@ -16,11 +16,15 @@
 
 import random
 import datetime
+import os
+import json
 from typing import List, Optional
 
 
 def main():
+    log("Starting Game...")
     show_header()
+    show_leaderboard()
 
     # CREATE THE BOARD
     board = [
@@ -36,6 +40,7 @@ def main():
     active_player_index = 0
     player_name = input("Enter your name: ")
     players = [player_name.capitalize(), "Computer"]
+    log(f"Player = {players[0]}")
 
     date_range = datetime.datetime.now().month
     if date_range == 1:
@@ -59,6 +64,7 @@ def main():
     print(f"Your symbol will be {symbols[0]}")
     print(f"{players[1]} will be {symbols[1]}")
     print()
+    log(f"{players[0]} will be {symbols[0]} and {players[1]} will be {symbols[1]}.")
 
     while not find_winner(board):
         player = players[active_player_index]
@@ -72,11 +78,26 @@ def main():
 
         active_player_index = (active_player_index + 1) % len(players)
 
-        print()
-        print(f"GAME OVER! {player} ({symbol}) has won with the board:")
-        print()
-        show_board(board)
-        print()
+    print()
+    print(f"GAME OVER! {player} ({symbol}) has won with the board:")
+    print()
+    log(f"Game over! {player} ({symbol}) wins the game")
+    show_board(board)
+    print()
+
+    record_win(player)
+
+
+def show_leaderboard():
+    leaders = load_leaders()
+    sorted_leaders = list(leaders.items())
+    sorted_leaders.sort(key=lambda l: l[1], reverse=True)
+    print("LEADERS:")
+    for name, wins in sorted_leaders[0:5]:
+        print(f"{wins} -- {name}")
+    print()
+    print("--------------------------")
+    print()
 
 
 def show_header():
@@ -222,6 +243,45 @@ def find_sequences_of_four_cells_in_a_row(cells: List[str]) -> List[List[str]]:
         if len(candidate) == 4:
             sequences.append(candidate)
     return sequences
+
+
+def load_leaders():
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, 'c4leaderboard.json')
+
+    if not os.path.exists(filename):
+        return {}
+
+    with open(filename, "r", encoding="utf-8") as fin:
+        return json.load(fin)
+
+
+def record_win(winner_name):
+    leaders = load_leaders()
+
+    if winner_name in leaders:
+        leaders[winner_name] += 1
+    else:
+        leaders[winner_name] = 1
+
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, 'c4leaderboard.json')
+
+    with open(filename, "w", encoding="utf-8") as fout:
+        json.dump(leaders, fout)
+
+    log("Winner recorded")
+
+
+def log(msg):
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, 'c4.log')
+    time_text = datetime.datetime.now().strftime('%c')
+
+    with open(filename, 'a', encoding="utf-8") as fout:
+        fout.write(f"{time_text}: ")
+        fout.write(msg)
+        fout.write('\n')
 
 
 if __name__ == "__main__":
