@@ -1,14 +1,12 @@
 import random
-from typing import NoReturn
+import json
+import os
 
-rolls = {
-    "rock": {"defeats": ["scissors"], "defeated_by": ["paper"]},
-    "paper": {"defeats": ["rock"], "defeated_by": ["scissors"]},
-    "scissors": {"defeats": ["paper"], "defeated_by": ["rock"]},
-}
+rolls = {"Nothing": "Here"}
 
 
 def main():
+    load_rolls()
     show_header()
     play_game("You", "Computer")
 
@@ -91,6 +89,17 @@ def check_winning_throw(player_1, player_2, roll1, roll2):
         return player_1
     elif roll2 in outcome.get("defeated_by"):
         return player_2
+
+
+def load_rolls():
+    global rolls
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, 'rolls.json')
+
+    with open(filename, 'r', encoding='utf-8') as fin:
+        rolls = json.load(fin)
+
+    print(f"Loaded rolls: {list(rolls.keys())}")
 
 
 if __name__ == "__main__":
