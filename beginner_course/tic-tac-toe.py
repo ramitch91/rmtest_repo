@@ -1,4 +1,8 @@
 import random
+import os
+import datetime
+import json
+
 
 # x - create the board
 # x - choose the players
@@ -11,6 +15,8 @@ import random
 
 
 def main():
+    log("Start Game...")
+    show_leaderboard()
     show_header()
     # CREATE THE BOARD
     board = [
@@ -21,7 +27,9 @@ def main():
 
     # CHOOSE INITIAL PLAYER
     active_player_index = 0
-    players = ["Ricky", "Computer"]
+    player_name = input("Enter your name: ")
+    log(f"Player = {player_name.capitalize()}")
+    players = [player_name.capitalize(), "Computer"]
     symbols = ["X", "O"]
 
     # UNTIL SOMEONE WINS
@@ -33,7 +41,7 @@ def main():
         show_board(board)
 
         # CHOOSE LOCATION
-        if not choose_location(board, symbol):
+        if not choose_location(board, symbol, players[active_player_index]):
             print("That isn't an option, try again.")
             continue
 
@@ -48,6 +56,8 @@ def main():
     show_board(board)
     print("-----------------------------")
     print()
+    log(f"Game Over! {player} won")
+    record_win(player)
 
 
 # Board is a list of rows
@@ -70,7 +80,6 @@ def announce_turn(player):
 
 
 def show_board(board):
-
     for row in board:
         print("| ", end="")
         for cell in row:
@@ -80,9 +89,21 @@ def show_board(board):
     print()
 
 
-def choose_location(board, symbol):
-    row = int(input("Choose which row: "))
-    column = int(input("Choose which column: "))
+def choose_location(board, symbol, player):
+    if player == "Computer":
+        row = random.randint(1, 3)
+        column = random.randint(1, 3)
+    else:
+        try:
+            row = int(input("Choose which row: "))
+        except ValueError:
+            print("You must enter a number from 1  to 3")
+            return False
+        try:
+            column = int(input("Choose which column: "))
+        except ValueError:
+            print("You must enter a number from 1  to 3")
+            return False
 
     row -= 1
     column -= 1
@@ -118,7 +139,6 @@ def get_winning_sequences(board):
     sequences.extend(rows)
 
     # win by columns
-    columns = []
     for col_idx in range(0, 3):
         col = [board[0][col_idx], board[1][col_idx], board[2][col_idx]]
         sequences.append(col)
@@ -131,6 +151,57 @@ def get_winning_sequences(board):
     sequences.extend(diagonals)
 
     return sequences
+
+
+def log(msg):
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, 'tictactoe.log')
+    time_text = datetime.datetime.now().strftime('%c')
+
+    with open(filename, 'a', encoding="utf-8") as fout:
+        fout.write(f"{time_text}: ")
+        fout.write(msg)
+        fout.write('\n')
+
+
+def load_leaders():
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, '3Tleaderboard.json')
+
+    if not os.path.exists(filename):
+        return {}
+
+    with open(filename, 'r', encoding="utf-8") as fin:
+        json.load(fin)
+
+
+def show_leaderboard():
+    leaders = load_leaders()
+    sorted_leaders = list(leaders.items())
+    sorted_leaders.sort(key=lambda l: l[1], reverse=True)
+    print("LEADERS:")
+    for name, wins in sorted_leaders[0:5]:
+        print(f"{wins} -- {name}")
+    print()
+    print("--------------------------")
+    print()
+
+
+def record_win(winner_name):
+    leaders = load_leaders()
+
+    if winner_name in leaders:
+        leaders[winner_name] += 1
+    else:
+        leaders[winner_name] = 1
+
+    directory = os.path.dirname(__file__)
+    filename = os.path.join(directory, "3Tleaderboard.json")
+
+    with open(filename, 'w', encoding="utf-8") as fout:
+        json.dump(leaders, fout)
+
+    log("Winner recorded.")
 
 
 if __name__ == "__main__":
