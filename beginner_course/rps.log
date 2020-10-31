@@ -35,3 +35,228 @@ Winner recorded.
 Game Over
 Sun Oct 25 12:28:58 2020: Game started
 Sun Oct 25 12:28:58 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 10:08:50 2020: Game started
+Sat Oct 31 10:08:50 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 10:10:01 2020: Player = C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py
+Sat Oct 31 10:10:01 2020: New game starting between C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py and Computer
+Sat Oct 31 10:10:27 2020: Round: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py rolls rock and Computer rolls fire
+Sat Oct 31 10:10:27 2020: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py take(s) the round.
+Sat Oct 31 10:10:27 2020: Current score is {'C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py': 1, 'Computer': 0}
+Sat Oct 31 10:10:28 2020: Round: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py rolls rock and Computer rolls scissors
+Sat Oct 31 10:10:28 2020: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py take(s) the round.
+Sat Oct 31 10:10:28 2020: Current score is {'C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py': 2, 'Computer': 0}
+Sat Oct 31 10:10:28 2020: Round: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py rolls rock and Computer rolls rock
+Sat Oct 31 10:10:28 2020: This round is a tie.
+Sat Oct 31 10:10:28 2020: Current score is {'C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py': 2, 'Computer': 0}
+Sat Oct 31 10:10:29 2020: Round: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py rolls rock and Computer rolls rock
+Sat Oct 31 10:10:29 2020: This round is a tie.
+Sat Oct 31 10:10:29 2020: Current score is {'C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py': 2, 'Computer': 0}
+Sat Oct 31 10:10:29 2020: Round: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py rolls rock and Computer rolls scissors
+Sat Oct 31 10:10:29 2020: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py take(s) the round.
+Sat Oct 31 10:10:29 2020: Current score is {'C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py': 3, 'Computer': 0}
+Sat Oct 31 10:10:29 2020: C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py win(s) the game.
+Sat Oct 31 10:10:29 2020: Winner recorded.
+Sat Oct 31 10:10:29 2020: Game Over
+Sat Oct 31 10:10:45 2020: Game started
+Sat Oct 31 10:10:45 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 10:11:34 2020: Game started
+Sat Oct 31 10:11:34 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 10:11:50 2020: Game started
+Sat Oct 31 10:11:50 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 10:26:39 2020: Player = C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py
+Sat Oct 31 10:26:39 2020: New game starting between C:/users/rmitchell/documents/programming/python/test_projects/venv/scripts/python.exe c:/users/rmitchell/documents/programming/python/test_projects/beginner_course/rpsgame.py and Computer
+Sat Oct 31 10:27:30 2020: Game started
+Sat Oct 31 10:27:30 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 10:27:40 2020: Player = Ricky
+Sat Oct 31 10:27:40 2020: New game starting between Ricky and Computer
+Sat Oct 31 10:27:46 2020: Round: Ricky rolls rock and Computer rolls water
+Sat Oct 31 10:27:46 2020: Computer take(s) the round.
+Sat Oct 31 10:27:46 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 10:28:04 2020: Round: Ricky rolls rock and Computer rolls water
+Sat Oct 31 10:28:04 2020: Computer take(s) the round.
+Sat Oct 31 10:28:04 2020: Current score is {'Ricky': 0, 'Computer': 2}
+Sat Oct 31 10:28:06 2020: Round: Ricky rolls rock and Computer rolls fire
+Sat Oct 31 10:28:06 2020: Ricky take(s) the round.
+Sat Oct 31 10:28:06 2020: Current score is {'Ricky': 1, 'Computer': 2}
+Sat Oct 31 10:28:08 2020: Round: Ricky rolls rock and Computer rolls paper
+Sat Oct 31 10:28:08 2020: Computer take(s) the round.
+Sat Oct 31 10:28:08 2020: Current score is {'Ricky': 1, 'Computer': 3}
+Sat Oct 31 10:28:08 2020: Computer win(s) the game.
+Sat Oct 31 10:28:08 2020: Winner recorded.
+Sat Oct 31 10:28:08 2020: Game Over
+Sat Oct 31 12:24:12 2020: Game started
+Sat Oct 31 12:24:12 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 12:24:24 2020: Player = Ricky
+Sat Oct 31 12:24:24 2020: New game starting between Ricky and Computer
+Sat Oct 31 12:24:30 2020: Round: Ricky rolls rock and Computer rolls air
+Sat Oct 31 12:24:30 2020: Computer take(s) the round.
+Sat Oct 31 12:24:30 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 12:24:37 2020: Round: Ricky rolls scissors and Computer rolls air
+Sat Oct 31 12:24:37 2020: Ricky take(s) the round.
+Sat Oct 31 12:24:37 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 12:24:41 2020: Round: Ricky rolls sponge and Computer rolls fire
+Sat Oct 31 12:24:41 2020: Computer take(s) the round.
+Sat Oct 31 12:24:41 2020: Current score is {'Ricky': 1, 'Computer': 2}
+Sat Oct 31 12:24:49 2020: Round: Ricky rolls water and Computer rolls rock
+Sat Oct 31 12:24:49 2020: Ricky take(s) the round.
+Sat Oct 31 12:24:49 2020: Current score is {'Ricky': 2, 'Computer': 2}
+Sat Oct 31 12:24:53 2020: Round: Ricky rolls fire and Computer rolls paper
+Sat Oct 31 12:24:53 2020: Ricky take(s) the round.
+Sat Oct 31 12:24:53 2020: Current score is {'Ricky': 3, 'Computer': 2}
+Sat Oct 31 12:24:53 2020: [93mRicky win(s) the game.
+Sat Oct 31 12:24:53 2020: Winner recorded.
+Sat Oct 31 12:24:53 2020: Game Over
+Sat Oct 31 12:27:32 2020: Game started
+Sat Oct 31 12:27:32 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 12:27:56 2020: Player = Ricky
+Sat Oct 31 12:27:56 2020: New game starting between Ricky and Computer
+Sat Oct 31 12:28:00 2020: Round: Ricky rolls water and Computer rolls paper
+Sat Oct 31 12:28:00 2020: Computer take(s) the round.
+Sat Oct 31 12:28:00 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 12:28:01 2020: Round: Ricky rolls sponge and Computer rolls air
+Sat Oct 31 12:28:01 2020: Ricky take(s) the round.
+Sat Oct 31 12:28:01 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 12:28:01 2020: Round: Ricky rolls scissors and Computer rolls scissors
+Sat Oct 31 12:28:01 2020: This round is a tie.
+Sat Oct 31 12:28:01 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 12:28:04 2020: Round: Ricky rolls rock and Computer rolls scissors
+Sat Oct 31 12:28:04 2020: Ricky take(s) the round.
+Sat Oct 31 12:28:04 2020: Current score is {'Ricky': 2, 'Computer': 1}
+Sat Oct 31 12:28:07 2020: Round: Ricky rolls paper and Computer rolls water
+Sat Oct 31 12:28:07 2020: Ricky take(s) the round.
+Sat Oct 31 12:28:07 2020: Current score is {'Ricky': 3, 'Computer': 1}
+Sat Oct 31 12:28:07 2020: [93mRicky wins the game.
+Sat Oct 31 12:28:07 2020: Winner recorded.
+Sat Oct 31 12:28:07 2020: Game Over
+Sat Oct 31 12:29:49 2020: Game started
+Sat Oct 31 12:29:49 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 12:29:54 2020: Player = Ricky
+Sat Oct 31 12:29:54 2020: New game starting between Ricky and Computer
+Sat Oct 31 12:29:57 2020: Round: Ricky rolls rock and Computer rolls rock
+Sat Oct 31 12:29:57 2020: This round is a tie.
+Sat Oct 31 12:29:57 2020: Current score is {'Ricky': 0, 'Computer': 0}
+Sat Oct 31 12:29:58 2020: Round: Ricky rolls scissors and Computer rolls rock
+Sat Oct 31 12:29:58 2020: Computer take(s) the round.
+Sat Oct 31 12:29:58 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 12:30:00 2020: Round: Ricky rolls sponge and Computer rolls water
+Sat Oct 31 12:30:00 2020: Ricky take(s) the round.
+Sat Oct 31 12:30:00 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 12:30:02 2020: Round: Ricky rolls water and Computer rolls air
+Sat Oct 31 12:30:02 2020: Computer take(s) the round.
+Sat Oct 31 12:30:02 2020: Current score is {'Ricky': 1, 'Computer': 2}
+Sat Oct 31 12:30:04 2020: Round: Ricky rolls air and Computer rolls rock
+Sat Oct 31 12:30:04 2020: Ricky take(s) the round.
+Sat Oct 31 12:30:04 2020: Current score is {'Ricky': 2, 'Computer': 2}
+Sat Oct 31 12:30:06 2020: Round: Ricky rolls fire and Computer rolls fire
+Sat Oct 31 12:30:06 2020: This round is a tie.
+Sat Oct 31 12:30:06 2020: Current score is {'Ricky': 2, 'Computer': 2}
+Sat Oct 31 12:30:09 2020: Round: Ricky rolls paper and Computer rolls rock
+Sat Oct 31 12:30:09 2020: Ricky take(s) the round.
+Sat Oct 31 12:30:09 2020: Current score is {'Ricky': 3, 'Computer': 2}
+Sat Oct 31 12:30:09 2020: [93mRicky wins the game.
+Sat Oct 31 12:30:09 2020: Winner recorded.
+Sat Oct 31 12:30:09 2020: Game Over
+Sat Oct 31 17:39:32 2020: Game started
+Sat Oct 31 17:39:32 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 17:39:37 2020: Player = Ricky
+Sat Oct 31 17:39:37 2020: New game starting between Ricky and Computer
+Sat Oct 31 17:39:40 2020: Round: Ricky rolls paper and Computer rolls water
+Sat Oct 31 17:39:40 2020: Ricky take(s) the round.
+Sat Oct 31 17:39:40 2020: Current score is {'Ricky': 1, 'Computer': 0}
+Sat Oct 31 17:39:42 2020: Round: Ricky rolls fire and Computer rolls water
+Sat Oct 31 17:39:42 2020: Computer take(s) the round.
+Sat Oct 31 17:39:42 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 17:39:44 2020: Round: Ricky rolls air and Computer rolls scissors
+Sat Oct 31 17:39:44 2020: Computer take(s) the round.
+Sat Oct 31 17:39:44 2020: Current score is {'Ricky': 1, 'Computer': 2}
+Sat Oct 31 17:39:47 2020: Round: Ricky rolls rock and Computer rolls water
+Sat Oct 31 17:39:47 2020: Computer take(s) the round.
+Sat Oct 31 17:39:48 2020: Current score is {'Ricky': 1, 'Computer': 3}
+Sat Oct 31 17:39:48 2020: Computer wins the game.
+Sat Oct 31 17:39:48 2020: Winner recorded.
+Sat Oct 31 17:39:48 2020: Game Over
+Sat Oct 31 18:02:55 2020: Game started
+Sat Oct 31 18:02:55 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 18:03:03 2020: Player = Ricky
+Sat Oct 31 18:03:03 2020: New game starting between Ricky and Computer
+Sat Oct 31 18:03:18 2020: Round: Ricky rolls rock and Computer rolls water
+Sat Oct 31 18:03:18 2020: Computer take(s) the round.
+Sat Oct 31 18:03:18 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 18:03:23 2020: Round: Ricky rolls water and Computer rolls water
+Sat Oct 31 18:03:23 2020: This round is a tie.
+Sat Oct 31 18:03:23 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 18:03:27 2020: Round: Ricky rolls paper and Computer rolls air
+Sat Oct 31 18:03:27 2020: Ricky take(s) the round.
+Sat Oct 31 18:03:27 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 18:03:31 2020: Round: Ricky rolls scissors and Computer rolls rock
+Sat Oct 31 18:03:31 2020: Computer take(s) the round.
+Sat Oct 31 18:03:31 2020: Current score is {'Ricky': 1, 'Computer': 2}
+Sat Oct 31 18:03:35 2020: Round: Ricky rolls fire and Computer rolls rock
+Sat Oct 31 18:03:35 2020: Computer take(s) the round.
+Sat Oct 31 18:03:35 2020: Current score is {'Ricky': 1, 'Computer': 3}
+Sat Oct 31 18:03:35 2020: Computer wins the game.
+Sat Oct 31 18:03:35 2020: Winner recorded.
+Sat Oct 31 18:03:35 2020: Game Over
+Sat Oct 31 18:24:32 2020: Game started
+Sat Oct 31 18:24:32 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 18:24:45 2020: Player = Ricky
+Sat Oct 31 18:24:45 2020: New game starting between Ricky and Computer
+Sat Oct 31 18:25:05 2020: Round: Ricky rolls rock and Computer rolls air
+Sat Oct 31 18:25:05 2020: Computer take(s) the round.
+Sat Oct 31 18:25:05 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 18:25:11 2020: Round: Ricky rolls air and Computer rolls water
+Sat Oct 31 18:25:11 2020: Ricky take(s) the round.
+Sat Oct 31 18:25:11 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 18:25:15 2020: Round: Ricky rolls water and Computer rolls water
+Sat Oct 31 18:25:15 2020: This round is a tie.
+Sat Oct 31 18:25:15 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 18:25:19 2020: Round: Ricky rolls fire and Computer rolls rock
+Sat Oct 31 18:25:19 2020: Computer take(s) the round.
+Sat Oct 31 18:25:19 2020: Current score is {'Ricky': 1, 'Computer': 2}
+Sat Oct 31 18:25:22 2020: Round: Ricky rolls sponge and Computer rolls scissors
+Sat Oct 31 18:25:22 2020: Computer take(s) the round.
+Sat Oct 31 18:25:22 2020: Current score is {'Ricky': 1, 'Computer': 3}
+Sat Oct 31 18:25:22 2020: Computer wins the game.
+Sat Oct 31 18:25:22 2020: Winner recorded.
+Sat Oct 31 18:25:22 2020: Game Over
+Sat Oct 31 18:26:38 2020: Game started
+Sat Oct 31 18:26:38 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 18:26:42 2020: Player = Ricky
+Sat Oct 31 18:26:42 2020: New game starting between Ricky and Computer
+Sat Oct 31 18:26:51 2020: Round: Ricky rolls scissors and Computer rolls rock
+Sat Oct 31 18:26:51 2020: Computer take(s) the round.
+Sat Oct 31 18:26:51 2020: Current score is {'Ricky': 0, 'Computer': 1}
+Sat Oct 31 18:26:56 2020: Round: Ricky rolls scissors and Computer rolls sponge
+Sat Oct 31 18:26:56 2020: Ricky take(s) the round.
+Sat Oct 31 18:26:56 2020: Current score is {'Ricky': 1, 'Computer': 1}
+Sat Oct 31 18:27:16 2020: Round: Ricky rolls paper and Computer rolls air
+Sat Oct 31 18:27:16 2020: Ricky take(s) the round.
+Sat Oct 31 18:27:16 2020: Current score is {'Ricky': 2, 'Computer': 1}
+Sat Oct 31 18:27:23 2020: Round: Ricky rolls sponge and Computer rolls water
+Sat Oct 31 18:27:23 2020: Ricky take(s) the round.
+Sat Oct 31 18:27:23 2020: Current score is {'Ricky': 3, 'Computer': 1}
+Sat Oct 31 18:27:23 2020: Ricky wins the game.
+Sat Oct 31 18:27:23 2020: Winner recorded.
+Sat Oct 31 18:27:23 2020: Game Over
+Sat Oct 31 18:28:51 2020: Game started
+Sat Oct 31 18:28:51 2020: Loaded rolls: ['rock', 'paper', 'scissors', 'fire', 'sponge', 'air', 'water']
+Sat Oct 31 18:28:57 2020: Player = Amy
+Sat Oct 31 18:28:57 2020: New game starting between Amy and Computer
+Sat Oct 31 18:29:09 2020: Round: Amy rolls air and Computer rolls air
+Sat Oct 31 18:29:09 2020: This round is a tie.
+Sat Oct 31 18:29:09 2020: Current score is {'Amy': 0, 'Computer': 0}
+Sat Oct 31 18:29:13 2020: Round: Amy rolls water and Computer rolls sponge
+Sat Oct 31 18:29:13 2020: Computer take(s) the round.
+Sat Oct 31 18:29:13 2020: Current score is {'Amy': 0, 'Computer': 1}
+Sat Oct 31 18:29:19 2020: Round: Amy rolls air and Computer rolls paper
+Sat Oct 31 18:29:19 2020: Computer take(s) the round.
+Sat Oct 31 18:29:19 2020: Current score is {'Amy': 0, 'Computer': 2}
+Sat Oct 31 18:29:22 2020: Round: Amy rolls sponge and Computer rolls air
+Sat Oct 31 18:29:22 2020: Amy take(s) the round.
+Sat Oct 31 18:29:22 2020: Current score is {'Amy': 1, 'Computer': 2}
+Sat Oct 31 18:29:25 2020: Round: Amy rolls rock and Computer rolls water
+Sat Oct 31 18:29:25 2020: Computer take(s) the round.
+Sat Oct 31 18:29:25 2020: Current score is {'Amy': 1, 'Computer': 3}
+Sat Oct 31 18:29:25 2020: Computer wins the game.
+Sat Oct 31 18:29:25 2020: Winner recorded.
+Sat Oct 31 18:29:25 2020: Game Over
