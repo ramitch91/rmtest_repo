@@ -12,14 +12,21 @@ rolls = {}
 
 
 def main():
-    print(Fore.WHITE)
-    log("Game started")
-    load_rolls()
-    show_header()
-    show_leaderboard()
-    player1, player2 = get_players()
-    play_game(player1, player2)
-    log("Game Over")
+    try:
+        print(Fore.WHITE)
+        log("Game started")
+        load_rolls()
+        show_header()
+        show_leaderboard()
+        player1, player2 = get_players()
+        play_game(player1, player2)
+        log("Game Over")
+    except KeyboardInterrupt:
+        print(Fore.CYAN + "It looks like you've got to go. See you later." + Fore.WHITE)
+    except json.decoder.JSONDecodeError as je:
+        print(Fore.RED + f"Error: File rolls.json is invalid format: {je}" + Fore.WHITE)
+    except Exception as ex:
+        print(Fore.RED + f"An unknown error occurred: {ex}" + Fore.WHITE)
 
 
 def show_header():
@@ -99,16 +106,11 @@ def play_game(player_1, player_2):
 
 def get_roll(player_name, roll_names):
     print(f"Available rolls: {', '.join(roll_names)}")
-    """ for index, r in enumerate(roll_names, start=1):
-        print(f"{index}. {r}") """
 
     word_comp = PlayCompleter()
     # word_comp = WordCompleter(roll_names)
     roll = prompt(f"{player_name}, what is your roll? ", completer=word_comp)
 
-    """ text = input(f"{player_name}, please choose roll? [rock, paper, scissors]: ")
-    selected_index = int(text) - 1
- """
     if not roll or roll not in roll_names:
         print(
             Fore.RED + f"Sorry {player_name}, {roll} is not a valid play." + Fore.WHITE

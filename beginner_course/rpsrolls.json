@@ -1,31 +1,86 @@
 {
     "rock": {
-        "defeats": ["scissors", "fire", "sponge"],
-        "defeated_by": ["paper","air", "water"]
+        "defeats": [
+            "scissors",
+            "fire",
+            "sponge"
+        ],
+        "defeated_by": [
+            "paper",
+            "air",
+            "water"
+        ]
     },
     "paper": {
-        "defeats": ["rock", "air", "water"],
-        "defeated_by": ["scissors", "fire", "water"]
+        "defeats": [
+            "rock",
+            "air",
+            "water"
+        ],
+        "defeated_by": [
+            "scissors",
+            "fire",
+            "water"
+        ]
     },
     "scissors": {
-        "defeats": ["paper", "air", "sponge"],
-        "defeated_by": ["rock", "fire", "water"]
+        "defeats": [
+            "paper",
+            "air",
+            "sponge"
+        ],
+        "defeated_by": [
+            "rock",
+            "fire",
+            "water"
+        ]
     },
     "fire": {
-        "defeats": ["scissors", "paper", "sponge"],
-        "defeated_by": ["rock", "air", "water"]
+        "defeats": [
+            "scissors",
+            "paper",
+            "sponge"
+        ],
+        "defeated_by": [
+            "rock",
+            "air",
+            "water"
+        ]
     },
     "sponge": {
-        "defeats": ["paper", "air", "water"],
-        "defeated_by": ["rock", "fire", "scissors"]
+        "defeats": [
+            "paper",
+            "air",
+            "water"
+        ],
+        "defeated_by": [
+            "rock",
+            "fire",
+            "scissors"
+        ]
     },
     "air": {
-        "defeats": ["fire", "rock", "water"],
-        "defeated_by": ["scissors", "paper", "sponge"]
+        "defeats": [
+            "fire",
+            "rock",
+            "water"
+        ],
+        "defeated_by": [
+            "scissors",
+            "paper",
+            "sponge"
+        ]
     },
     "water": {
-        "defeats": ["rock", "fire", "scissors"],
-        "defeated_by": ["air", "paper", "sponge"]
+        "defeats": [
+            "rock",
+            "fire",
+            "scissors"
+        ],
+        "defeated_by": [
+            "air",
+            "paper",
+            "sponge"
+        ]
     }
-
 }

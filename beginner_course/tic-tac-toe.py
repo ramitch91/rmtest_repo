@@ -16,51 +16,56 @@ from colorama import Fore
 
 
 def main():
-    print(Fore.WHITE)
-    log("Start Game...")
-    show_header
-    show_leaderboard()
-    # CREATE THE BOARD
-    board = [
-        [None, None, None],
-        [None, None, None],
-        [None, None, None],
-    ]
+    try:
+        print(Fore.WHITE)
+        log("Start Game...")
+        show_header
+        show_leaderboard()
+        # CREATE THE BOARD
+        board = [
+            [None, None, None],
+            [None, None, None],
+            [None, None, None],
+        ]
 
-    # CHOOSE INITIAL PLAYER
-    active_player_index = 0
-    player_name = input("Enter your name: ")
-    log(f"Player = {player_name.capitalize()}")
-    players = [player_name.capitalize(), "Computer"]
-    symbols = ["X", "O"]
+        # CHOOSE INITIAL PLAYER
+        active_player_index = 0
+        player_name = input("Enter your name: ")
+        log(f"Player = {player_name.capitalize()}")
+        players = [player_name.capitalize(), "Computer"]
+        symbols = ["X", "O"]
 
-    # UNTIL SOMEONE WINS
-    while not find_winner(board):
-        # SHOW THE BOARD
-        player = players[active_player_index]
-        symbol = symbols[active_player_index]
-        announce_turn(player)
+        # UNTIL SOMEONE WINS
+        while not find_winner(board):
+            # SHOW THE BOARD
+            player = players[active_player_index]
+            symbol = symbols[active_player_index]
+            announce_turn(player)
+            show_board(board)
+
+            # CHOOSE LOCATION
+            if not choose_location(board, symbol, players[active_player_index]):
+                print(Fore.RED + "That isn't an option, try again." + Fore.WHITE)
+                continue
+
+            # TOGGLE PLAYER
+            active_player_index = (active_player_index + 1) % len(players)
+
+        fore = Fore.GREEN if player == players[0] else Fore.RED
+        print(fore)
+        print("-----------------------------")
+        print()
+        print(fore + f"Game Over! {player} has won with the board: " + Fore.WHITE)
+        print()
         show_board(board)
-
-        # CHOOSE LOCATION
-        if not choose_location(board, symbol, players[active_player_index]):
-            print(Fore.RED + "That isn't an option, try again." + Fore.WHITE)
-            continue
-
-        # TOGGLE PLAYER
-        active_player_index = (active_player_index + 1) % len(players)
-
-    fore = Fore.GREEN if player == players[0] else Fore.RED
-    print(fore)
-    print("-----------------------------")
-    print()
-    print(fore + f"Game Over! {player} has won with the board: " + Fore.WHITE)
-    print()
-    show_board(board)
-    print(fore + "-----------------------------")
-    print(Fore.WHITE)
-    log(f"Game Over! {player} won")
-    record_win(player)
+        print(fore + "-----------------------------")
+        print(Fore.WHITE)
+        log(f"Game Over! {player} won")
+        record_win(player)
+    except KeyboardInterrupt:
+        print(Fore.CYAN + "It looks like you got to go. See you later." + Fore.WHITE)
+    except Exception as ex:
+        print(Fore.RED + f"An unknown error occurred: {ex}" + Fore.WHITE)
 
 
 # Board is a list of rows
@@ -105,10 +110,6 @@ def choose_location(board, symbol, player):
     else:
         try:
             row = int(input("Choose which row: "))
-        except ValueError:
-            print(Fore.RED + "You must enter a number from 1  to 3" + Fore.WHITE)
-            return False
-        try:
             column = int(input("Choose which column: "))
         except ValueError:
             print(Fore.RED + "You must enter a number from 1  to 3" + Fore.WHITE)
