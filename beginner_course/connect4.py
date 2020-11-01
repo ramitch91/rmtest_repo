@@ -19,6 +19,7 @@ import datetime
 import os
 import json
 from typing import List, Optional
+from colorama import Fore
 
 
 def main():
@@ -78,8 +79,9 @@ def main():
 
         active_player_index = (active_player_index + 1) % len(players)
 
+    fore = Fore.GREEN if player == players[0] else Fore.RED
     print()
-    print(f"GAME OVER! {player} ({symbol}) has won with the board:")
+    print(fore + f"GAME OVER! {player} ({symbol}) has won with the board:" + fore)
     print()
     log(f"Game over! {player} ({symbol}) wins the game")
     show_board(board)
@@ -92,20 +94,21 @@ def show_leaderboard():
     leaders = load_leaders()
     sorted_leaders = list(leaders.items())
     sorted_leaders.sort(key=lambda l: l[1], reverse=True)
-    print("LEADERS:")
+    print(Fore.CYAN + "LEADERS:")
     for name, wins in sorted_leaders[0:5]:
         print(f"{wins} -- {name}")
     print()
     print("--------------------------")
-    print()
+    print(Fore.WHITE)
 
 
 def show_header():
-    print()
+    print(Fore.MAGENTA)
     print("--------------------------------------")
     print("           Connect 4 Game")
+    print("      External Library Edition")
     print("--------------------------------------")
-    print()
+    print(Fore.WHITE)
 
 
 def announce_turn(player):
@@ -153,10 +156,7 @@ def choose_location(board, symbol, player):
 
 
 def find_bottom_row(board: List[List[str]], column: int) -> Optional[int]:
-    col_cells = [
-        board[n][column]
-        for n in range(0, len(board))
-    ]
+    col_cells = [board[n][column] for n in range(0, len(board))]
     last_empty = None
     for idx, cell in enumerate(col_cells):
         if cell is None:
@@ -239,7 +239,7 @@ def get_winning_sequences(board):
 def find_sequences_of_four_cells_in_a_row(cells: List[str]) -> List[List[str]]:
     sequences = []
     for n in range(0, len(cells) - 3):
-        candidate = cells[n:n + 4]
+        candidate = cells[n : n + 4]
         if len(candidate) == 4:
             sequences.append(candidate)
     return sequences
@@ -247,7 +247,7 @@ def find_sequences_of_four_cells_in_a_row(cells: List[str]) -> List[List[str]]:
 
 def load_leaders():
     directory = os.path.dirname(__file__)
-    filename = os.path.join(directory, 'c4leaderboard.json')
+    filename = os.path.join(directory, "c4leaderboard.json")
 
     if not os.path.exists(filename):
         return {}
@@ -265,7 +265,7 @@ def record_win(winner_name):
         leaders[winner_name] = 1
 
     directory = os.path.dirname(__file__)
-    filename = os.path.join(directory, 'c4leaderboard.json')
+    filename = os.path.join(directory, "c4leaderboard.json")
 
     with open(filename, "w", encoding="utf-8") as fout:
         json.dump(leaders, fout)
@@ -275,13 +275,13 @@ def record_win(winner_name):
 
 def log(msg):
     directory = os.path.dirname(__file__)
-    filename = os.path.join(directory, 'c4.log')
-    time_text = datetime.datetime.now().strftime('%c')
+    filename = os.path.join(directory, "c4.log")
+    time_text = datetime.datetime.now().strftime("%c")
 
-    with open(filename, 'a', encoding="utf-8") as fout:
+    with open(filename, "a", encoding="utf-8") as fout:
         fout.write(f"{time_text}: ")
         fout.write(msg)
-        fout.write('\n')
+        fout.write("\n")
 
 
 if __name__ == "__main__":

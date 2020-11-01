@@ -2,6 +2,7 @@ import random
 import os
 import datetime
 import json
+from colorama import Fore
 
 
 # x - create the board
@@ -15,9 +16,10 @@ import json
 
 
 def main():
+    print(Fore.WHITE)
     log("Start Game...")
+    show_header
     show_leaderboard()
-    show_header()
     # CREATE THE BOARD
     board = [
         [None, None, None],
@@ -42,20 +44,21 @@ def main():
 
         # CHOOSE LOCATION
         if not choose_location(board, symbol, players[active_player_index]):
-            print("That isn't an option, try again.")
+            print(Fore.RED + "That isn't an option, try again." + Fore.WHITE)
             continue
 
         # TOGGLE PLAYER
         active_player_index = (active_player_index + 1) % len(players)
 
-    print()
+    fore = Fore.GREEN if player == players[0] else Fore.RED
+    print(fore)
     print("-----------------------------")
     print()
-    print(f"Game Over! {player} has won with the board: ")
+    print(fore + f"Game Over! {player} has won with the board: " + Fore.WHITE)
     print()
     show_board(board)
-    print("-----------------------------")
-    print()
+    print(fore + "-----------------------------")
+    print(Fore.WHITE)
     log(f"Game Over! {player} won")
     record_win(player)
 
@@ -65,12 +68,12 @@ def main():
 
 
 def show_header():
-    print()
+    print(Fore.MAGENTA)
     print("-----------------------------------")
     print("        Tic-Tac-Toe Game")
     print("           version 2")
     print("-----------------------------------")
-    print()
+    print(Fore.WHITE)
 
 
 def announce_turn(player):
@@ -84,7 +87,13 @@ def show_board(board):
         print("| ", end="")
         for cell in row:
             symbol = cell if cell is not None else "-"
-            print(symbol, end=" | ")
+            if symbol == "X":
+                fore = Fore.GREEN
+            elif symbol == "O":
+                fore = Fore.YELLOW
+            else:
+                fore = Fore.WHITE
+            print(fore + symbol + Fore.WHITE, end=" | ")
         print()
     print()
 
@@ -97,12 +106,12 @@ def choose_location(board, symbol, player):
         try:
             row = int(input("Choose which row: "))
         except ValueError:
-            print("You must enter a number from 1  to 3")
+            print(Fore.RED + "You must enter a number from 1  to 3" + Fore.WHITE)
             return False
         try:
             column = int(input("Choose which column: "))
         except ValueError:
-            print("You must enter a number from 1  to 3")
+            print(Fore.RED + "You must enter a number from 1  to 3" + Fore.WHITE)
             return False
 
     row -= 1
@@ -155,36 +164,36 @@ def get_winning_sequences(board):
 
 def log(msg):
     directory = os.path.dirname(__file__)
-    filename = os.path.join(directory, 'tictactoe.log')
-    time_text = datetime.datetime.now().strftime('%c')
+    filename = os.path.join(directory, "tictactoe.log")
+    time_text = datetime.datetime.now().strftime("%c")
 
-    with open(filename, 'a', encoding="utf-8") as fout:
+    with open(filename, "a", encoding="utf-8") as fout:
         fout.write(f"{time_text}: ")
         fout.write(msg)
-        fout.write('\n')
+        fout.write("\n")
 
 
 def load_leaders():
     directory = os.path.dirname(__file__)
-    filename = os.path.join(directory, '3Tleaderboard.json')
+    filename = os.path.join(directory, "3Tleaderboard.json")
 
     if not os.path.exists(filename):
         return {}
 
-    with open(filename, 'r', encoding="utf-8") as fin:
-        json.load(fin)
+    with open(filename, "r", encoding="utf-8") as fin:
+        return json.load(fin)
 
 
 def show_leaderboard():
     leaders = load_leaders()
     sorted_leaders = list(leaders.items())
     sorted_leaders.sort(key=lambda l: l[1], reverse=True)
-    print("LEADERS:")
+    print(Fore.CYAN + "LEADERS:")
     for name, wins in sorted_leaders[0:5]:
         print(f"{wins} -- {name}")
     print()
     print("--------------------------")
-    print()
+    print(Fore.WHITE)
 
 
 def record_win(winner_name):
@@ -198,7 +207,7 @@ def record_win(winner_name):
     directory = os.path.dirname(__file__)
     filename = os.path.join(directory, "3Tleaderboard.json")
 
-    with open(filename, 'w', encoding="utf-8") as fout:
+    with open(filename, "w", encoding="utf-8") as fout:
         json.dump(leaders, fout)
 
     log("Winner recorded.")
