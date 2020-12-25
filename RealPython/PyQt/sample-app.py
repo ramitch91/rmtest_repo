@@ -1,4 +1,10 @@
 # Sample PyQT application from RealPython.com
+# This application was written while taking a
+#  PyQt class on RealPython.com.  All ideas and setup
+# and most of the code came from the class.  Only a few
+# additional lines of code were written by me to expand
+# the same concept through out some of the menus
+# and toolbars.
 
 import sys
 from functools import partial
@@ -23,6 +29,7 @@ from PyQt5.QtWidgets import (
 import qrc_resources
 
 
+# noinspection SpellCheckingInspection
 class Window(QMainWindow):
     """Main Window."""
 
@@ -45,6 +52,29 @@ class Window(QMainWindow):
         # self._createContextMenu()
 
         self._connectActions()
+
+
+    def _connectActions(self):
+        # Connect File Actions
+        self.newAction.triggered.connect(self.newFile)
+        self.openAction.triggered.connect(self.openFile)
+        self.saveAction.triggered.connect(self.saveFile)
+        self.exitAction.triggered.connect(self.close)
+
+        # Connect Edit Actions
+        self.copyAction.triggered.connect(self.copyContent)
+        self.pasteAction.triggered.connect(self.pasteContent)
+        self.cutAction.triggered.connect(self.cutContent)
+        self.findAction.triggered.connect(self.findContent)
+        self.replaceAction.triggered.connect(self.replaceContent)
+
+        # Connect Help Actions
+        self.helpContentAction.triggered.connect(self.helpContent)
+        self.aboutAction.triggered.connect(self.about)
+
+        # Connect Open Recent to dynamically populate it
+        self.openRecentMenu.aboutToShow.connect(self.populateOpenRecent)
+
 
     def _createActions(self):
         # File Actions
@@ -152,6 +182,14 @@ class Window(QMainWindow):
         helpMenu.addAction(self.helpContentAction)
         helpMenu.addAction(self.aboutAction)
 
+    def _createStatusBar(self):
+        self.statusbar = self.statusBar()
+        # Adding a temporary message
+        self.statusbar.showMessage("Ready", 3000)
+        # Adding a permanent message
+        self.wcLabel = QLabel(f"{self.getWordCount()} Words")
+        self.statusbar.addPermanentWidget(self.wcLabel)
+
     def _createToolBars(self):
         # File Toolbar
         fileToolBar = self.addToolBar("File")
@@ -200,6 +238,27 @@ class Window(QMainWindow):
         # Launch the menu
         menu.exec(event.globalPos())
 
+    def getWordCount(self):
+        # Logic for computing the word count goes here...
+        return 42
+
+    def openRecentFile(self, filename):
+        # Logic for opening a recent file goes here...
+        self.centralWidget.setText(f"<b>{filename}</b> opened")
+
+    def populateOpenRecent(self):
+        # Step 1. Remove the old options from the menu
+        self.openRecentMenu.clear()
+        # Step 2. Dynamically create  the actions
+        actions = []
+        filenames = [f"File-{n}" for n in range(5)]
+        for filename in filenames:
+            action = QAction(filename, self)
+            action.triggered.connect(partial(self.openRecentFile, filename))
+            actions.append(action)
+        # Step 3. Add the actions to the  menu
+        self.openRecentMenu.addActions(actions)
+
     # Slots
     def newFile(self):
         # Logic for creating a new file goes here...
@@ -238,56 +297,6 @@ class Window(QMainWindow):
 
     def replaceContent(self):
         self.centralWidget.setText("<b>Edit > Find > Replace...</b> clicked")
-
-    def _connectActions(self):
-        # Connect File Actions
-        self.newAction.triggered.connect(self.newFile)
-        self.openAction.triggered.connect(self.openFile)
-        self.saveAction.triggered.connect(self.saveFile)
-        self.exitAction.triggered.connect(self.close)
-
-        # Connect Edit Actions
-        self.copyAction.triggered.connect(self.copyContent)
-        self.pasteAction.triggered.connect(self.pasteContent)
-        self.cutAction.triggered.connect(self.cutContent)
-        self.findAction.triggered.connect(self.findContent)
-        self.replaceAction.triggered.connect(self.replaceContent)
-
-        # Connect Help Actions
-        self.helpContentAction.triggered.connect(self.helpContent)
-        self.aboutAction.triggered.connect(self.about)
-
-        # Connect Open Recent to dynamically populate it
-        self.openRecentMenu.aboutToShow.connect(self.populateOpenRecent)
-
-    def populateOpenRecent(self):
-        # Step 1. Remove the old options from the menu
-        self.openRecentMenu.clear()
-        # Step 2. Dynamically create  the actions
-        actions = []
-        filenames = [f"File-{n}" for n in range(5)]
-        for filename in filenames:
-            action = QAction(filename, self)
-            action.triggered.connect(partial(self.openRecentFile, filename))
-            actions.append(action)
-        # Step 3. Add the actions to the  menu
-        self.openRecentMenu.addActions(actions)
-
-    def openRecentFile(self, filename):
-        # Logic for opening a recent file goes here...
-        self.centralWidget.setText(f"<b>{filename}</b> opened")
-
-    def _createStatusBar(self):
-        self.statusbar = self.statusBar()
-        # Adding a temporary message
-        self.statusbar.showMessage("Ready", 3000)
-        # Adding a permanent message
-        self.wcLabel = QLabel(f"{self.getWordCount()} Words")
-        self.statusbar.addPermanentWidget(self.wcLabel)
-
-    def getWordCount(self):
-        #Logic for computing the word count goes here...
-        return 42
 
 
 if __name__ == "__main__":

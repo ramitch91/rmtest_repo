@@ -112,7 +112,7 @@ class PyCalcCtrl:
     """PyCalc Controller class"""
 
     def __init__(self, model, view):
-        """Controller initiallizer"""
+        """Controller initializer"""
         self._evaluate = model
         self._view = view
 
@@ -135,7 +135,7 @@ class PyCalcCtrl:
     def _connectSignals(self):
         """Connect signals and slots"""
         for btnText, btn in self._view.buttons.items():
-            if  btnText not in {'=', 'C'}:
+            if btnText not in {'=', 'C'}:
                 btn.clicked.connect(partial(self._buildExpression, btnText))
 
         self._view.buttons['='].clicked.connect(self._calculateResult)
@@ -152,6 +152,7 @@ def evaluateExpression(expression):
         result = ERROR_MSG
 
     return result
+
 
 # Client Code
 def main():

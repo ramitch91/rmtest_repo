@@ -27,6 +27,7 @@ from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QWidget
 
 __version__ = "0.1"
+# noinspection SpellCheckingInspection
 __author__ = "Leodanis Pozo Ramos"
 
 ERROR_MSG = "ERROR"

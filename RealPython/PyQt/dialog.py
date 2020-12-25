@@ -10,6 +10,8 @@ from PyQt5.QtWidgets import QFormLayout
 from PyQt5.QtWidgets import QLineEdit
 from PyQt5.QtWidgets import QVBoxLayout
 
+
+# noinspection SpellCheckingInspection
 class Dialog(QDialog):
     """Dialog"""
     def __init__(self, parent=None):
