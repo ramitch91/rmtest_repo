@@ -12,12 +12,19 @@ class Window(QWidget):
         super().__init__()
         self.setWindowTitle("QVBoxLayout Example")
         self.resize(500, 110)
+
         # Create a QVBoxLayout instance
         layout = QVBoxLayout()
+
         # Add widgets to the layout
         layout.addWidget(QPushButton("Top"))
         layout.addWidget(QPushButton("Center"))
         layout.addWidget(QPushButton("Bottom"))
+
+        # Add stretch at the end so the spacing between the buttons
+        # will not change as the user expands the window downward.
+        layout.addStretch()
+
         # Set the layout on the application's window
         self.setLayout(layout)
 
