@@ -1,0 +1,14 @@
+README.md
+setup.cfg
+setup.py
+project/__init__.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/requires.txt
+project.egg-info/top_level.txt
+project/build_data/__init__.py
+project/build_data/build_author_book_publisher_sqlite.py
+project/data/__init__.py
+project/modules/__init__.py
+project/modules/models.py
