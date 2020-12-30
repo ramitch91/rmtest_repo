@@ -7,7 +7,7 @@ import queue
 
 class Pipeline(queue.Queue):
     def __init__(self):
-        super(Pipeline, self).__init__(maxsize=10)
+        super(Pipeline, self).__init__(maxsize=20)
 
     def set_message(self, message):
         print(f"producing message of {message}")
