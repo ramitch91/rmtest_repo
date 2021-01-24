@@ -86,3 +86,7 @@ def delete_entry(data: list) -> list:
     data.reverse()
 
     return data
+
+
+if __name__ == "__main__":
+    pass
