@@ -1,2 +1,12 @@
 venv
 .vscode
+.idea
+/RealPython/.idea
+/RealPython/materials-master
+/RealPython/PyQt/resources
+/RealPython/SQLite3_SQLAlchemy/project
+/RealPython/SQLite3_SQLAlchemy/project.egg_info
+/RealPython/threading
+/TalkPython/mongodb-quickstart-course
+/TalkPython/PyCharmLearningProject
+.idea/inspectionProfiles
