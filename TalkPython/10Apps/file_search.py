@@ -1,4 +1,7 @@
+import collections
 import os
+
+SearchResult = collections.namedtuple('SearchResult', 'file, line, text')
 
 
 def main():
@@ -15,7 +18,12 @@ def main():
 
     matches = search_folders(folder, text)
     for m in matches:
-        print(m)
+        print("---------------MATCH---------------")
+        print(f"File: {m.file}")
+        print(f"Line: {m.line}")
+        print(f"Text: {m.text.strip()}")
+        print()
+
 
 def print_header():
     print("--------------------------")
@@ -53,9 +61,12 @@ def search_folders(folder, text):
 def search_file(filename, search_text):
     matches = []
     with open(filename, "r", encoding='UTF-8') as fin:
+        line_no = 0
         for line in fin:
+            line_no += 1
             if line.lower().find(search_text) >= 0:
-                matches.append(line)
+                m = SearchResult(file=filename, line=line_no, text= line)
+                matches.append(m)
     return matches
 
 
