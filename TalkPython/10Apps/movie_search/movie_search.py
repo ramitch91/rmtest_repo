@@ -1,3 +1,5 @@
+import requests.exceptions
+
 import movie_svc
 
 
@@ -19,14 +21,22 @@ def search_loop():
 
     while search.lower() != 'x':
         search = input("What movie do you want to search for (x to Exit)? ")
-        if search.lower() != 'x':
-            results = movie_svc.find_movies(search)
-            print(f"Found {len(results)} movies for search {search}")
+        try:
+            if search.lower() != 'x':
+                results = movie_svc.find_movies(search)
+                print(f"Found {len(results)} movies for search {search}")
 
-            for r in results:
-                print(f"{r.year} -- {r.title}")
+                for r in results:
+                    print(f"{r.year} -- {r.title}")
 
-            print()
+                print()
+        except ValueError as ve:
+            print(f'Error: {ve}')
+        except requests.exceptions.ConnectionError:
+            print('Error. Your network is down.')
+        except Exception as x:
+            print(f'Unexpected error: {x}')
+
     print('Exiting...')
 
 
